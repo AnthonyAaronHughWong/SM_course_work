@@ -1,3 +1,5 @@
+#!env python2.7
+from __future__ import division
 import kmeans as km
 import numpy as np
 from  mylib import gausspdf
@@ -54,7 +56,7 @@ if __name__ == '__main__':
     def dotest(k, max_iter):
         
         print('Model Number is ' + str(k))
-        input("Press Enter to Continue: ")        
+        raw_input("Press Enter to Continue: ")        
         for i in range(n_classes):
             train = trains[i]
             d = np.shape(train)[1]
@@ -71,14 +73,14 @@ if __name__ == '__main__':
                     print(m)
 
         
-        input('Params calculated, Press Enter to stat true rate: ')
+        raw_input('Params calculated, Press Enter to stat true rate: ')
         testlen = len(testA) + len(testB)    
         rate1 = mylib.statTrueRate(testA, paramses, classifier,  0 ) / testlen
         rate2 = mylib.statTrueRate(testB, paramses, classifier,  1 ) / testlen
         print(rate1 + rate2)
 
 
-    input('Files loaded, Press Enter to Continue: ')
+    raw_input('Files loaded, Press Enter to Continue: ')
     for k in ks:        
         dotest(k, max_iter=4)
     

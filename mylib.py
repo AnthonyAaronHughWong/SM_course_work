@@ -1,5 +1,4 @@
 import math
-from _collections_abc import Set as _Set, Sequence as _Sequence
 
 #we only do minimal check here
 def distance(x, y):

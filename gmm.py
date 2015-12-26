@@ -1,7 +1,7 @@
+#! env python3
 import kmeans as km
 import numpy as np
 from  mylib import gausspdf
-from scipy.stats import multivariate_normal
 import functools
 import pdb
 

@@ -1,11 +1,9 @@
-#!env python2.7
-from __future__ import division
+#!env python3
 import kmeans as km
 import numpy as np
 from  mylib import gausspdf
 import mylib as mylib
 import gmm as gmm
-from scipy.stats import multivariate_normal
 import pdb
 import functools
 
@@ -56,7 +54,7 @@ if __name__ == '__main__':
     def dotest(k, max_iter):
         
         print('Model Number is ' + str(k))
-        raw_input("Press Enter to Continue: ")        
+        input("Press Enter to Continue: ")
         for i in range(n_classes):
             train = trains[i]
             d = np.shape(train)[1]
@@ -73,14 +71,14 @@ if __name__ == '__main__':
                     print(m)
 
         
-        raw_input('Params calculated, Press Enter to stat true rate: ')
+        input('Params calculated, Press Enter to stat true rate: ')
         testlen = len(testA) + len(testB)    
         rate1 = mylib.statTrueRate(testA, paramses, classifier,  0 ) / testlen
         rate2 = mylib.statTrueRate(testB, paramses, classifier,  1 ) / testlen
         print(rate1 + rate2)
 
 
-    raw_input('Files loaded, Press Enter to Continue: ')
+    input('Files loaded, Press Enter to Continue: ')
     for k in ks:        
         dotest(k, max_iter=4)
     

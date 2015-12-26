@@ -1,3 +1,4 @@
+#! env python3
 import kmeans as km
 import numpy as np
 import mylib as mylib

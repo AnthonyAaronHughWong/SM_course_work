@@ -101,7 +101,7 @@ resulting in high error rate. But I found this bug eventually.
 I assume every sample has the responsibilities of every model as hidden variable.
 
 
-####First Approad
+####First Approach
 The kmeans works pretty good once I wrote it,
 but the gmm always produce models with very similiar centers.
 However by looking at the visualization of the data, I don't
@@ -146,11 +146,47 @@ the empirical classification error,
 given $c$ as the true class,
 which is:
 
+\newcommand{\length}{\#}
+
 $$
 \frac{
-lengthof\{k(x) \ne c(x)\, \forall x \in \mathbf{x}  \}
+\length\{k(x) \ne c(x)\, \forall x \in \mathbf{x}  \}
 }{
-lengthof(\mathbf{x})
+\length(\mathbf{x})
 }$$
 
 This function needs lots of time to calculate for sure.
+But I found in the PPTs that `Q` can be approximated:
+
+
+\newcommand{\stepAppr}[2]{
+\frac{1}{1 + e ^ {- #1#2 }}
+}
+
+
+
+$$
+Q(\lambda)=\sum_{x}{
+\stepAppr{\alpha}{d(x,c(x))}
+}$$
+
+with
+
+$$
+d(x,c)=-ln(p(c)p(x|\lambda_{c}))+ln(
+\frac{1}{\length{\mathbf{x}}-1}
+\sum_{c' \neq c }
+{e ^{
+\eta \cdot  ln(p(c')p(x|\lambda_{c'}))
+}})^{\frac{1}{\eta}}
+$$
+
+where $\alpha$ and $\eta > 1$ are parameters.
+Then
+
+$$
+\frac{\partial}{\partial\lambda}Q=
+\sum_{x}{
+\alpha\stepAppr{\alpha}{d}(1-\stepAppr{\alpha}{d}) \cdot
+\frac{\partial d}{\partial\lambda}
+}$$

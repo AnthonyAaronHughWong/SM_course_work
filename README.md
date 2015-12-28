@@ -204,4 +204,5 @@ $$
 
 Thanks to the power of `Haskell`, the implementation is straightforward.
 But, it doesn't seem to improve much either comparing with [Q1](#q1).
-Though, I don't believe I wrote the formulas wrong.
+I already used 100 iterations and I believe it must have converged long ago.
+I don't believe I wrote the formulas wrong, though.

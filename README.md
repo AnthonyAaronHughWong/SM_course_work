@@ -7,7 +7,9 @@ I used `R`, `Haskell` and `Python`.
 Their suffix is `.R`, `.hs` and `.py`
 respectively.
 
-You need `Python3.5` to run my Python code, and
+You need `Python3.5` or `Python2.7` to run my Python code,
+with module `numpy` installed,
+and
 `GHC` to compile my Haskell code.
 
 Normally, I try best not to use standard library.
@@ -30,7 +32,13 @@ visualize.R:
 ~ visualize data interactively using `R` language.
 
 Q1.hs:
-~ **Problem One** source code.
+~ **[Problem One](#q1)** source code.
+
+Q2.py:
+~ **[Problem 2](#q2)** source.
+
+Q3.hs:
+~ **[Problem 3](#q3)** source.
 
 README.md:
 ~ Used to generate this report.
@@ -156,7 +164,7 @@ $$
 }$$
 
 This function needs lots of time to calculate for sure.
-But I found in the PPTs that `Q` can be approximated:
+But I found in the PPTs that $Q$ can be approximated:
 
 
 \newcommand{\stepAppr}[2]{
@@ -174,7 +182,7 @@ with
 
 $$
 d(x,c)=-ln(p(c)p(x|\lambda_{c}))+ln(
-\frac{1}{\length{\mathbf{x}}-1}
+\frac{1}{\length{\mathbf{C}}-1}
 \sum_{c' \neq c }
 {e ^{
 \eta \cdot  ln(p(c')p(x|\lambda_{c'}))
@@ -190,3 +198,10 @@ $$
 \alpha\stepAppr{\alpha}{d}(1-\stepAppr{\alpha}{d}) \cdot
 \frac{\partial d}{\partial\lambda}
 }$$
+
+
+#### Result
+
+Thanks to the power of `Haskell`, the implementation is straightforward.
+But, it doesn't seem to improve much either comparing with [Q1](#q1).
+Though, I don't believe I wrote the formulas wrong.

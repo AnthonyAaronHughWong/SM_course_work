@@ -1,9 +1,12 @@
 ghc=ghc
 python=python
 sed=./sed.sh
+hslib=mylib.hs
 p1=Q1.hs
 p1o=Q1
 p2=Q2.py
+p3=Q3.hs
+p3o=Q3
 MAINFONT ?=  Lucida Grande
 pandoc= pandoc -s #--latex-engine=xelatex  -V mainfont="$(MAINFONT)"
 readme= README.md
@@ -13,11 +16,14 @@ traini=train.txt
 testo=testTable.txt
 traino=trainTable.txt
 
-all: ${p1o} ${testo} ${traino} $(report)
+all: ${p1o} ${testo} ${p3o} ${traino} $(report)
 
 
-${p1o}: ${p1}
+${p1o}: ${p1} ${hslib}
 	${ghc} ${p1} -o ${p1o}
+
+${p3o}: ${p3} ${hslib}
+	${ghc} ${p3} -o ${p3o}
 
 ${testo}: ${testi}
 	${sed} ${testi} ${testo}
